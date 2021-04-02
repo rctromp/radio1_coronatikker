@@ -1,0 +1,92 @@
+body{
+  background-color: rgb(21, 32, 43);
+  color: white;
+  font-size: 0.9em;
+  font-family: "Helvetica Neue", Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+article{
+  float: left;
+  margin: 2em;
+}
+
+article.intro{
+  float: none;
+  margin-bottom: 0;
+  text-align: center;
+  max-width: 95em;
+}
+
+main section{
+  padding-top: 2em;
+  float: left;
+  clear: left;
+}
+
+h1,
+h2,
+h3, 
+h4{
+  margin: 0.5em 0 0.2em;
+}
+
+h1{
+  font-size: 2.3em;
+}
+
+h3{
+  font-size: 2em;
+}
+
+h4{
+  font-size: 1.5em;
+}
+
+main section h3{
+  margin-top: 0;
+}
+
+td{
+  min-width: 2em;
+  padding: 0 0.2em;
+}
+
+td:first-child{
+  min-width: 3em;
+}
+
+td .municipality{
+  display: block;
+  float: left;
+  margin-right: 0.5em;
+}
+
+td .municipality + hr {
+  margin: 0.7em 0.5em 0 0;
+  border-top-style: dashed;
+  border-top-color: rgb(56, 68, 77);
+} 
+
+td .none{
+  display: inline-block;
+  color: #aaa;
+  text-align: center;
+  width: 1.3em;
+}
+
+table.example{
+  font-style: italic;
+}
+
+table.align-left td{
+  text-align: left;
+  min-width: 0;
+}
+
+table.align-left td:first-child{
+  padding-left: 0;
+}
+
+table.align-left hr{
+  display: none;
+}
