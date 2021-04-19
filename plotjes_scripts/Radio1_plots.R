@@ -1,3 +1,5 @@
+setwd('../') # move wd one parent up
+
 require(cowplot)
 require(tidyverse)
 require(rjson)
@@ -31,65 +33,65 @@ plot(cases_chart)
 
 finalise_plot(plot_name = cases_chart,
               source = "Bron: RIVM",
-              save_filepath = "C:/Users/r.tromp/Code/covid-19/plots/nieuwe_besmettinge.png",
-              logo_image_path = "C:/Users/r.tromp/Code/covid-19/huisstijl/Argos_logo-02.png")
+              save_filepath = "plotjes_output/nieuwe_besmettingen.png",
+              logo_image_path = "huisstijl/Argos_logo-02.png")
 
 ## IC GRAPH 1
 # Data filteren voor IC-opnames
 
-IC_chart <- ggplot(data = fourweek_data, aes(x = date)) +
-  geom_line(aes(y = IC_Current), color = "#3dc9f1", size = 1.2) +
-  geom_hline(yintercept=850, color = "#fc3929", size = 1.6,) +
-  geom_label(aes( x = date[15], y = 760, label = "IC-capaciteit"),
-             hjust = 0, 
-             vjust = 0.5, 
-             colour = "#555555", 
-             fill = "white", 
-             label.size = NA, 
-             family="Helvetica", 
-             size = 5) +
-  geom_curve(aes(x = date[15], y = 760, xend = date[13], yend = 850),
-             colour = "#555555",
-             size = 0.5,
-             curvature = -0.2,
-             arrow = arrow(length = unit(0.03, "npc"))) +
-  bbc_style() +
-  labs(subtitle = 'Coronapatienten liggend op de IC')
-
-plot(IC_chart)
-
-finalise_plot(plot_name = IC_chart,
-              source = "Bron: Stichting NICE",
-              save_filepath = "C:/Users/r.tromp/Code/covid-19/plots/IC.png",
-              logo_image_path = "C:/Users/r.tromp/Code/covid-19/huisstijl/Argos_logo-02.png")
+# IC_chart <- ggplot(data = fourweek_data, aes(x = date)) +
+#   geom_line(aes(y = IC_Current), color = "#3dc9f1", size = 1.2) +
+#   geom_hline(yintercept=850, color = "#fc3929", size = 1.6,) +
+#   geom_label(aes( x = date[15], y = 760, label = "IC-capaciteit"),
+#              hjust = 0, 
+#              vjust = 0.5, 
+#              colour = "#555555", 
+#              fill = "white", 
+#              label.size = NA, 
+#              family="Helvetica", 
+#              size = 5) +
+#   geom_curve(aes(x = date[15], y = 760, xend = date[13], yend = 850),
+#              colour = "#555555",
+#              size = 0.5,
+#              curvature = -0.2,
+#              arrow = arrow(length = unit(0.03, "npc"))) +
+#   bbc_style() +
+#   labs(subtitle = 'Coronapatienten liggend op de IC')
+# 
+# plot(IC_chart)
+# 
+# finalise_plot(plot_name = IC_chart,
+#               source = "Bron: Stichting NICE",
+#               save_filepath = "plotjes_output/IC.png",
+#               logo_image_path = "huisstijl/Argos_logo-02.png")
 
 
 # IC GRAPH NICE DATA
-IC_chart <- ggplot(data = nice_by_day, aes(x = date)) +
-  geom_line(aes(y = IC_Current), color = "#3dc9f1", size = 1.2) +
-  geom_hline(yintercept=850, color = "#fc3929", size = 1.6,) +
-  geom_label(aes( x = date[15], y = 760, label = "IC-capaciteit"),
-             hjust = 0, 
-             vjust = 0.5, 
-             colour = "#555555", 
-             fill = "white", 
-             label.size = NA, 
-             family="Helvetica", 
-             size = 5) +
-  geom_curve(aes(x = date[15], y = 760, xend = date[13], yend = 850),
-             colour = "#555555",
-             size = 0.5,
-             curvature = -0.2,
-             arrow = arrow(length = unit(0.03, "npc"))) +
-  bbc_style() +
-  labs(subtitle = 'Coronapatienten liggend op de IC')
-
-plot(IC_chart)
-
-finalise_plot(plot_name = IC_chart,
-              source = "Bron: Stichting NICE",
-              save_filepath = "C:/Users/r.tromp/Code/covid-19/plots/IC.png",
-              logo_image_path = "C:/Users/r.tromp/Code/covid-19/huisstijl/argos_roodblauw.png")
+# IC_chart <- ggplot(data = nice_by_day, aes(x = date)) +
+#   geom_line(aes(y = IC_Current), color = "#3dc9f1", size = 1.2) +
+#   geom_hline(yintercept=850, color = "#fc3929", size = 1.6,) +
+#   geom_label(aes( x = date[15], y = 760, label = "IC-capaciteit"),
+#              hjust = 0, 
+#              vjust = 0.5, 
+#              colour = "#555555", 
+#              fill = "white", 
+#              label.size = NA, 
+#              family="Helvetica", 
+#              size = 5) +
+#   geom_curve(aes(x = date[15], y = 760, xend = date[13], yend = 850),
+#              colour = "#555555",
+#              size = 0.5,
+#              curvature = -0.2,
+#              arrow = arrow(length = unit(0.03, "npc"))) +
+#   bbc_style() +
+#   labs(subtitle = 'Coronapatienten liggend op de IC')
+# 
+# plot(IC_chart)
+# 
+# finalise_plot(plot_name = IC_chart,
+#               source = "Bron: Stichting NICE",
+#               save_filepath = "plotjes/IC.png",
+#               logo_image_path = "huisstijl/argos_roodblauw.png")
 
 
 

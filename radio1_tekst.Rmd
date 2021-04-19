@@ -1,0 +1,72 @@
+---
+title: "De Argos/NPO Radio 1 Coronatikker"
+author: "Door Reinier Tromp"
+date: "`r format((Sys.Date()),'%d')` `r format((Sys.Date()),'%B')` 2021"
+output: html_document
+# css: style.css
+---
+***  
+```{r, include=FALSE}
+library(cowplot)
+library(tidyverse)
+library(rjson)
+require(data.table)
+library(dplyr)
+library(magrittr)
+library(knitr)
+library(bbplot)
+```
+
+
+```{r load data, include=FALSE}
+
+all.data <- read.csv("covid-19/data/all_data.csv")
+nice_by_day <- read.csv("covid-19/data/nice_by_day.csv")
+lcps.by_day <- read.csv("covid-19/data/lcps_by_day.csv")
+
+LCPS_klinisch_two_days <- last(all.data$Kliniek_Bedden,2)
+LCPS_Verpleeg_Huidig_Toename <- LCPS_klinisch_two_days[2] - LCPS_klinisch_two_days[1]
+LCPS_IC_two_days <- last(all.data$IC_Bedden_COVID,2)
+LCPS_IC_Huidig_Toename <- LCPS_IC_two_days[2] - LCPS_IC_two_days[1]
+
+sign.hosp.lcps <- paste0(ifelse(LCPS_Verpleeg_Huidig_Toename>=0," (+"," ("))
+sign.ic.lcps <- paste0(ifelse(LCPS_IC_Huidig_Toename>=0," (+"," ("))
+
+Kliniek_Nieuwe_Opnames <- ifelse(is.na(last(all.data$Kliniek_Nieuwe_Opnames_COVID)),"Onbekend",last(all.data$Kliniek_Nieuwe_Opnames_COVID))
+Kliniek_Aanwezig <- ifelse(is.na(last(all.data$Kliniek_Bedden)),"Onbekend",paste0(format(last(all.data$Kliniek_Bedden),decimal.mark = ",",big.mark =".",big.interval = 3),sign.hosp.lcps,LCPS_Verpleeg_Huidig_Toename))
+IC_Nieuwe_Opnames <- ifelse(is.na(last(all.data$IC_Nieuwe_Opnames_COVID)),"Onbekend",last(all.data$IC_Nieuwe_Opnames_COVID))
+IC_Aanwezig <- ifelse(is.na(last(all.data$IC_Bedden_COVID)),"Onbekend",paste0(last(all.data$IC_Bedden_COVID),sign.ic.lcps,LCPS_IC_Huidig_Toename))
+
+```
+
+## Nieuwe coronacijfers vandaag:
+
+### Bevestigde besmettingen
+Nieuwe besmettingen: **`r last(all.data$new.infection)`**
+
+Totaal besmettingen: **`r last(all.data$cases)`**
+
+### LCPS Ziekenhuizen
+Nu op de verpleegafdeling:**`r Kliniek_Aanwezig `**
+
+Nieuwe opnames verpleeg: **`r Kliniek_Nieuwe_Opnames `**
+
+### LCPS IC
+Nu op de IC: **`r IC_Aanwezig `**
+
+Nieuwe opnames: **`r IC_Nieuwe_Opnames `**
+
+### Intensive Care NICE:
+Nu op de IC: **`r last(nice_by_day$IC_Current)`** 
+
+Nieuw op de IC: **`r last(nice_by_day$ic_intake_nice)`**
+
+### Overleden
+Nieuwe doden: **`r last(all.data$new.deaths)`**
+
+Totaal aantal doden: **`r last(all.data$deaths)`**
+
+
+
+
+

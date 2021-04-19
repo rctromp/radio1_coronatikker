@@ -50,8 +50,8 @@ IC_stacked_barchart <-
   labs(subtitle = "De druk van corona op de IC")
   finalise_plot(plot_name = IC_stacked_barchart,
                 source = "Bron: LCPS",
-                save_filepath = "C:/Users/r.tromp/Code/covid-19/plots/IC_stacked.png",
-                logo_image_path = "C:/Users/r.tromp/Code/covid-19/huisstijl/Argos_logo-02.png")
+                save_filepath = "plotjes_output/IC_stacked.png",
+                logo_image_path = "huisstijl/Argos_logo-02.png")
 
 
 # IC graph year
@@ -68,8 +68,8 @@ IC_stacked_barchart_year <-
     labs(subtitle = "De druk van corona op de IC")
 finalise_plot(plot_name = IC_stacked_barchart_year,
               source = "Bron: LCPS",
-              save_filepath = "C:/Users/r.tromp/Code/covid-19/plots/IC_stacked_year.png",
-              logo_image_path = "C:/Users/r.tromp/Code/covid-19/huisstijl/Argos_logo-02.png")
+              save_filepath = "plotjes_output/IC_stacked_year.png",
+              logo_image_path = "huisstijl/Argos_logo-02.png")
 
 # # Clinic graph
 # clinic_chart_2 <- ggplot(data = lcps.data, aes(x = date, y = Kliniek_Bedden)) +

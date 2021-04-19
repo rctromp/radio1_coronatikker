@@ -1,0 +1,72 @@
+---
+title: "De Argos/NPO Radio 1 Coronatikker"
+author: "Door Reinier Tromp"
+date: "`r format((Sys.Date()),'%d')` `r format((Sys.Date()),'%B')` 2020"
+output: html_document
+# css: style.css
+---
+***  
+```{r, include=FALSE}
+library(cowplot)
+library(tidyverse)
+library(rjson)
+require(data.table)
+library(dplyr)
+library(magrittr)
+library(knitr)
+library(bbplot)
+```
+
+```{r setup, include=FALSE, eval = FALSE}
+knitr::opts_chunk$set(include = FALSE, eval = FALSE)
+setwd("C:/Users/r.tromp/Code/covid-19")
+source("workflow/daily_update.R", local = knitr::knit_global())
+````
+
+```{r load data, include=FALSE}
+setwd("C:/Users/r.tromp/Code/covid-19")
+all.data <- read.csv("data/all_data.csv")
+nice_by_day <- read.csv("data/nice_by_day.csv")
+nice.today <- read.csv("data-nice/nice-today.csv")
+```
+
+## Nieuwe coronacijfers vandaag:
+*** 
+
+### Bevestigde besmettingen
+Nieuwe besmettingen: **`r last(all.data$new.infection)`**
+
+Totaal besmettingen: **`r last(all.data$cases)`**
+
+### Ziekenhuizen
+Aantal coronapatienten nu op de verpleegafdeling: **`r last(nice.today$Hospital_Currently)`**
+
+Totaal aantal ziekenhuisopnames: **`r last(all.data$hospitalization)`**
+  
+### Intensive Care:
+Aantal coronapatienten nu op de IC: **`r last(nice.today$IC_Current)`** 
+
+Nieuw op de IC: **`r last(nice_by_day$ic_intake_nice)`**
+
+### Overleden
+Nieuwe doden: **`r last(all.data$new.deaths)`**
+
+Totaal aantal doden: **`r last(all.data$deaths)`**
+
+
+```{r}
+# source("plot_scripts/daily_maps_plots.R")
+
+
+```
+
+
+
+
+
+* In samenwerking met Marino van Zelst en Edwin Veldhuizen *
+
+
+
+
+
