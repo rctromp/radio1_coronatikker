@@ -1,4 +1,4 @@
-setwd('../') # move wd one parent up
+# setwd('../') # move wd one parent up
 
 require(cowplot)
 require(tidyverse)

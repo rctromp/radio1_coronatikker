@@ -39,18 +39,23 @@ write.csv(all.data, file = "data/all_data.csv",row.names = F)
 # source("plot_scripts/IC_graphs.R")
 
 all.data <- read.csv("data/all_data.csv")
-nice_by_day <- read.csv("data/nice_by_day.csv")
+nice.by_day <- read.csv("data/nice_by_day.csv")
+
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 ## Load values for printing
-LCPS_klinisch_two_days <- last(all.data$Kliniek_Bedden,2)
-LCPS_Verpleeg_Huidig_Toename <- LCPS_klinisch_two_days[2] - LCPS_klinisch_two_days[1]
-LCPS_IC_two_days <- last(all.data$IC_Bedden_COVID,2)
-LCPS_IC_Huidig_Toename <- LCPS_IC_two_days[2] - LCPS_IC_two_days[1]
+# LCPS_klinisch_two_days <- last(all.data$Kliniek_Bedden,2)
+# LCPS_Verpleeg_Huidig_Toename <- LCPS_klinisch_two_days[2] - LCPS_klinisch_two_days[1]
+# LCPS_IC_two_days <- last(all.data$IC_Bedden_COVID,2)
+# LCPS_IC_Huidig_Toename <- LCPS_IC_two_days[2] - LCPS_IC_two_days[1]
+# 
+# sign.hosp.lcps <- paste0(ifelse(LCPS_Verpleeg_Huidig_Toename>=0," (+"," ("))
+# sign.ic.lcps <- paste0(ifelse(LCPS_IC_Huidig_Toename>=0," (+"," ("))
+# 
+# Kliniek_Nieuwe_Opnames <- ifelse(is.na(last(all.data$Kliniek_Nieuwe_Opnames_COVID)),"Onbekend",last(all.data$Kliniek_Nieuwe_Opnames_COVID))
+# Kliniek_Aanwezig <- ifelse(is.na(last(all.data$Kliniek_Bedden)),"Onbekend",paste0(format(last(all.data$Kliniek_Bedden),decimal.mark = ",",big.mark =".",big.interval = 3),sign.hosp.lcps,LCPS_Verpleeg_Huidig_Toename))
+# IC_Nieuwe_Opnames <- ifelse(is.na(last(all.data$IC_Nieuwe_Opnames_COVID)),"Onbekend",last(all.data$IC_Nieuwe_Opnames_COVID))
+# IC_Aanwezig <- ifelse(is.na(last(all.data$IC_Bedden_COVID)),"Onbekend",paste0(last(all.data$IC_Bedden_COVID),sign.ic.lcps,LCPS_IC_Huidig_Toename))
+# 
+# 
 
-sign.hosp.lcps <- paste0(ifelse(LCPS_Verpleeg_Huidig_Toename>=0," (+"," ("))
-sign.ic.lcps <- paste0(ifelse(LCPS_IC_Huidig_Toename>=0," (+"," ("))
-
-Kliniek_Nieuwe_Opnames <- ifelse(is.na(last(all.data$Kliniek_Nieuwe_Opnames_COVID)),"Onbekend",last(all.data$Kliniek_Nieuwe_Opnames_COVID))
-Kliniek_Aanwezig <- ifelse(is.na(last(all.data$Kliniek_Bedden)),"Onbekend",paste0(format(last(all.data$Kliniek_Bedden),decimal.mark = ",",big.mark =".",big.interval = 3),sign.hosp.lcps,LCPS_Verpleeg_Huidig_Toename))
-IC_Nieuwe_Opnames <- ifelse(is.na(last(all.data$IC_Nieuwe_Opnames_COVID)),"Onbekend",last(all.data$IC_Nieuwe_Opnames_COVID))
-IC_Aanwezig <- ifelse(is.na(last(all.data$IC_Bedden_COVID)),"Onbekend",paste0(last(all.data$IC_Bedden_COVID),sign.ic.lcps,LCPS_IC_Huidig_Toename))

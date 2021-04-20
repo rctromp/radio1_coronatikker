@@ -21,7 +21,7 @@ library(bbplot)
 ```{r load data, include=FALSE}
 
 all.data <- read.csv("covid-19/data/all_data.csv")
-nice_by_day <- read.csv("covid-19/data/nice_by_day.csv")
+nice.by_day <- read.csv("covid-19/data/nice_by_day.csv")
 lcps.by_day <- read.csv("covid-19/data/lcps_by_day.csv")
 
 LCPS_klinisch_two_days <- last(all.data$Kliniek_Bedden,2)
@@ -57,15 +57,14 @@ Nu op de IC: **`r IC_Aanwezig `**
 Nieuwe opnames: **`r IC_Nieuwe_Opnames `**
 
 ### Intensive Care NICE:
-Nu op de IC: **`r last(nice_by_day$IC_Current)`** 
+Nu op de IC: **`r last(nice.by_day$IC_Current)`** 
 
-Nieuw op de IC: **`r last(nice_by_day$ic_intake_nice)`**
+Nieuw op de IC: **`r last(nice.by_day$ic_intake_nice)`**
 
 ### Overleden
 Nieuwe doden: **`r last(all.data$new.deaths)`**
 
 Totaal aantal doden: **`r last(all.data$deaths)`**
-
 
 
 
